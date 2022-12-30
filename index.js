@@ -6,11 +6,12 @@ const dotenv = require('dotenv').config();
 const token = process.env.token;
 const guildId = process.env.guildId;
 const clientId = process.env.clientId;
-const client = new Client({ intents: [
+const client = new Client({
+	intents: [
 		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMembers,
-		GatewayIntentBits.GuildPresences, 
-		GatewayIntentBits.GuildMembers, 
+		GatewayIntentBits.GuildPresences,
+		GatewayIntentBits.GuildMembers,
 		GatewayIntentBits.GuildMessageReactions
 	]
 });
@@ -39,7 +40,7 @@ rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.catch(console.error);
 
 client.once('ready', async () => {
-	
+
 	console.log('Ready!');
 
 });
