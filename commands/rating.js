@@ -9,9 +9,10 @@ module.exports = {
         .addStringOption(option =>
             option.setName('professor')
                 .setRequired(true)
-                .setDescription('The professor name')),
+                .setDescription(`The professor's name. 'Firstname Lastname', 'Firstname L.', and 'F. Lastname' are all the same`)),
     async execute(interaction) {
 
+        try {
         let url = `${process.env.server}${interaction.options.getString('professor')}`;
 
         let res = await fetch(`${url}`)
@@ -23,7 +24,7 @@ module.exports = {
 
         if (data.result === "Error") {
             const embed = new EmbedBuilder()
-                .setDescription(`"${interaction.options.getString('professor')}" returned an error, double check the spelling (case doesn't matter but spelling does)`).setColor("#FF0000");
+                .setDescription(`"${interaction.options.getString('professor')}" returned an error, double check the spelling (case doesn't matter but spelling and punctuation do). Names can be shortened as well, for example. 'Jean Gerard' can be 'J. Gerard' or 'Jean G.'`).setColor("#FF0000");
 
             return await interaction.reply({ embeds: [embed] });
         }
@@ -58,6 +59,14 @@ module.exports = {
             .setFooter({ text: 'All info is pulled from www.ratemyprofessors.com' })
 
         await interaction.reply({ embeds: [embed] });
+    }catch(err)
+    {
+        const embed = new EmbedBuilder()
+        .setDescription(`An error occured and has been logged`).setColor("#FF0000")
+
+        console.error(err)
+        return 
+    }
 
     },
 };
