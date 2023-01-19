@@ -5,6 +5,9 @@ const { Routes } = require('discord-api-types/v9');
 const dotenv = require('dotenv').config();
 const token = process.env.token;
 const guildId = process.env.guildId;
+const guildId2 = process.env.guildId2;
+const guildIdTest = process.env.guildIdTest;
+
 const clientId = process.env.clientId;
 const client = new Client({
 	intents: [
@@ -36,7 +39,15 @@ for (const file of commandFiles) {
 const rest = new REST({ version: '9' }).setToken(token);
 
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
-	.then(() => console.log('Successfully registered application commands.'))
+	.then(() => console.log('Successfully registered application commands for main server.'))
+	.catch(console.error);
+
+rest.put(Routes.applicationGuildCommands(clientId, guildId2), { body: commands })
+	.then(() => console.log('Successfully registered application commands for second server.'))
+	.catch(console.error);
+
+rest.put(Routes.applicationGuildCommands(clientId, guildIdTest), { body: commands })
+	.then(() => console.log('Successfully registered application commands for test server.'))
 	.catch(console.error);
 
 client.once('ready', async () => {
