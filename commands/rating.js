@@ -51,11 +51,12 @@ module.exports = {
         let l = hyperlink(`Rmp Url`, `${data.result.info.link}`)
         let l2 = hyperlink(`Bot Git`, `https://github.com/EmperorJean/rmpUMBbot`)
         let l3 = hyperlink(`Backend Git`, `https://github.com/EmperorJean/rmpUMBbackend`)
+        let l4 = hyperlink(`Report an Issue`, `https://github.com/EmperorJean/rmpUMBbackend/issues`)
         const embed = new EmbedBuilder()
             .setDescription(ret).setColor("#69f2ff")
             .setTitle(`Visit ${data.result.info.name}'s page`)
             .setURL(data.result.info.link)
-            .addFields({ name: 'Links', value: `${l} - ${l2} - ${l3}`, inline: true })
+            .addFields({ name: 'Links', value: `${l} - ${l2} - ${l3} - ${l4}`, inline: true })
             .setFooter({ text: 'All info is pulled from www.ratemyprofessors.com' })
 
         await interaction.reply({ embeds: [embed] });
