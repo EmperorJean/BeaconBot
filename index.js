@@ -46,10 +46,6 @@ rest.put(Routes.applicationGuildCommands(clientId, guildId2), { body: commands }
 	.then(() => console.log('Successfully registered application commands for second server.'))
 	.catch(console.error);
 
-rest.put(Routes.applicationGuildCommands(clientId, guildIdTest), { body: commands })
-	.then(() => console.log('Successfully registered application commands for test server.'))
-	.catch(console.error);
-
 client.once('ready', async () => {
 
 	console.log('Ready!');
