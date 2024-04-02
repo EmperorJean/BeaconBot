@@ -19,14 +19,7 @@ This Discord bot is designed for the UMass Boston CS server. It features two mai
    ```
    npm install
    ```
-4. Create a `.env` file in the root directory and add your configuration:
-   ```
-   clientId=your_discord_bot_client_id
-   guildId=your_discord_server_id
-   token=your_discord_bot_token
-   server=page_to_fetch_data_from
-   API_KEY=your_gemini_llm_api_key
-   ```
+4. Create a `.env` file in the root directory and add your configuration using`.env.template` as a guide
 5. Run the bot:
    ```
    node index.js
