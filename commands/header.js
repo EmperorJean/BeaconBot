@@ -1,6 +1,5 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder, hyperlink } = require('discord.js');
-const dotenv = require('dotenv').config();
 
 module.exports = {
     data: new SlashCommandBuilder()

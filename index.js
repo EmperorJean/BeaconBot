@@ -1,14 +1,13 @@
 const fs = require('fs');
-const { Client, Collection, GatewayIntentBits, Message, EmbedBuilder } = require('discord.js');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const dotenv = require('dotenv').config();
+
 const token = process.env.token;
 const guildId = process.env.guildId;
-const guildId2 = process.env.guildId2;
-const guildIdTest = process.env.guildIdTest;
-
 const clientId = process.env.clientId;
+
 const client = new Client({
 	intents: [
 		GatewayIntentBits.Guilds,
@@ -40,10 +39,6 @@ const rest = new REST({ version: '9' }).setToken(token);
 
 rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands for main server.'))
-	.catch(console.error);
-
-rest.put(Routes.applicationGuildCommands(clientId, guildId2), { body: commands })
-	.then(() => console.log('Successfully registered application commands for second server.'))
 	.catch(console.error);
 
 client.once('ready', async () => {
