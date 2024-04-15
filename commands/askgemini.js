@@ -15,7 +15,7 @@ module.exports = {
     async execute(interaction) {
         try {
             const prompt = interaction.options.getString('prompt');
-            const isEphemeral = interaction.channelId !== (BOT_CHANNEL || BOT_CHANNEL2);
+            const isEphemeral = interaction.channelId !== BOT_CHANNEL && interaction.channelId !== BOT_CHANNEL2;
             
             // Let user know that the bot is processing the request
             await interaction.reply({ content: 'Processing your request...', ephemeral: isEphemeral });

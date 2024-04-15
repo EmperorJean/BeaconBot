@@ -18,7 +18,7 @@ module.exports = {
     async execute(interaction) {
         try {
             const attachment = interaction.options.getAttachment('resume');
-            const isEphemeral = interaction.channelId !== (BOT_CHANNEL || BOT_CHANNEL2);
+            const isEphemeral = interaction.channelId !== BOT_CHANNEL && interaction.channelId !== BOT_CHANNEL2;
             let prompt = "I want you to roast this resume, don't hold back and be very verbose! ";
 
             // Let user know that the bot is processing the request
