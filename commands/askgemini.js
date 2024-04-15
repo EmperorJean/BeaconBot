@@ -3,7 +3,7 @@ const { EmbedBuilder } = require('discord.js');
 const { generateContent } = require('../tools/gemini');
 
 const BOT_CHANNEL = process.env.BOT_CHANNEL
-;
+const BOT_CHANNEL2 = process.env.BOT_CHANNEL2
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('ask-gemini')
@@ -15,7 +15,7 @@ module.exports = {
     async execute(interaction) {
         try {
             const prompt = interaction.options.getString('prompt');
-            const isEphemeral = interaction.channelId !== BOT_CHANNEL;
+            const isEphemeral = interaction.channelId !== (BOT_CHANNEL || BOT_CHANNEL2);
             
             // Let user know that the bot is processing the request
             await interaction.reply({ content: 'Processing your request...', ephemeral: isEphemeral });

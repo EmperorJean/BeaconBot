@@ -28,9 +28,8 @@ module.exports = {
             return await interaction.reply({ embeds: [embed] });
         }
     
-
+    
         ret += `
-        
         **Professor: ${data.result.info.name}**
         **Rating**: ${data.result.info.rating}
         **Would Take Again**: ${data.result.info.wta}

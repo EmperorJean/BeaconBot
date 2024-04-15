@@ -6,6 +6,7 @@ const dotenv = require('dotenv').config();
 
 const token = process.env.token;
 const guildId = process.env.guildId;
+const guildId2 = process.env.guildId2;
 const clientId = process.env.clientId;
 const status = process.env.BOT_STATUS || 'sudoku'
 
@@ -42,13 +43,17 @@ rest.put(Routes.applicationGuildCommands(clientId, guildId), { body: commands })
 	.then(() => console.log('Successfully registered application commands for main server.'))
 	.catch(console.error);
 
+rest.put(Routes.applicationGuildCommands(clientId, guildId2), { body: commands })
+	.then(() => console.log('Successfully registered application commands for Second server.'))
+	.catch(console.error);
+
 client.once('ready', async () => {
 
 	console.log('Ready!');
 	client.user.setPresence({
-        activities: [{ name: status, type: 0 }], // Type 0 is for "Playing", you can change it to other activity types
-        status: 'online'
-    });
+		activities: [{ name: status, type: 0 }], // Type 0 is for "Playing", you can change it to other activity types
+		status: 'online'
+	});
 
 });
 
