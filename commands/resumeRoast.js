@@ -31,7 +31,7 @@ module.exports = {
             const attachment = interaction.options.getAttachment('resume');
             const isEphemeral = interaction.channelId !== BOT_CHANNEL && interaction.channelId !== BOT_CHANNEL2;
             // let prompt = `I want you to roast this resume at level ${interaction.options.getString('level')} with level 1 being just feedback with no roast at all and 5 being a roast where you don't hold back at all, be very verbose! `;
-            let prompt = `I want you to roast this resume, be very verbose!`;
+            let prompt = "I want you to roast this resume, don't hold back and be very verbose! ";
             // Let user know that the bot is processing the request
             await interaction.reply({ content: 'Cooking up your roast 😈 ...', ephemeral: isEphemeral });
 
@@ -43,7 +43,7 @@ module.exports = {
                         return interaction.editReply({ content: 'Could not get the contents of your resume, please make sure you are uploading a pdf file', ephemeral: isEphemeral });
                     }
                 });
-                
+
             const responseText = await generateContent(prompt);
             // Create an embed with the response
             const embed = new EmbedBuilder()
